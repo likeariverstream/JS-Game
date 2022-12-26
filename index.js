@@ -1,10 +1,10 @@
-const start = document.getElementById('start') as HTMLButtonElement
-const game = document.getElementById('game') as HTMLDivElement
-const time = document.getElementById('time') as HTMLSpanElement
-const timeHeader = document.getElementById('time-header') as HTMLHeadingElement
-const resultHeader = document.getElementById('result-header') as HTMLHeadingElement
-const result = document.getElementById('result') as HTMLSpanElement
-const gameTime = document.getElementById('game-time') as HTMLInputElement
+const start = document.getElementById('start')
+const game = document.getElementById('game')
+const time = document.getElementById('time')
+const timeHeader = document.getElementById('time-header')
+const resultHeader = document.getElementById('result-header')
+const result = document.getElementById('result')
+const gameTime = document.getElementById('game-time')
 
 
 let score = 0
@@ -24,7 +24,7 @@ function startGame() {
   game.style.backgroundColor = '#FFF'
   hide(start)
   let interval = setInterval(() => {
-    let sec = parseFloat(time.textContent as string)
+    let sec = parseFloat(time.textContent)
     if (sec <= 0) {
       clearInterval(interval)
       endGame()
@@ -35,11 +35,8 @@ function startGame() {
   renderBox()
 }
 
-function handleBoxClick(event: MouseEvent) {
+function handleBoxClick(event) {
   if (!isGameStarted) {
-    return
-  }
-  if (!(event.target instanceof HTMLDivElement)) {
     return
   }
   if (event.target.dataset.square) {
@@ -48,11 +45,11 @@ function handleBoxClick(event: MouseEvent) {
   }
 }
 
-function show(element: HTMLElement) {
+function show(element) {
   element.classList.remove('hide')
 }
 
-function hide(element: HTMLElement) {
+function hide(element) {
   element.classList.add('hide')
 }
 
@@ -97,7 +94,7 @@ function renderBox() {
   game.insertAdjacentElement('afterbegin', square)
 }
 
-function getRandom(min: number, max: number) {
+function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min) + min)
 }
 
